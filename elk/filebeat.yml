@@ -1,0 +1,20 @@
+filebeat.inputs:
+- type: filestream
+  enabled: true
+  paths:
+    - /var/log/sales.log
+  fields:
+    type: sale_log
+
+- type: filestream
+  enabled: true
+  paths:
+    - /var/log/errors.log
+  fields:
+    type: error_log
+
+output:
+  logstash:
+    hosts: "logstash:5044"
+
+logging.metrics.enabled: false
